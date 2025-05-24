@@ -1,9 +1,11 @@
 package webdriver;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -12,6 +14,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
+import java.util.Collections;
 import java.util.List;
 
 public class Topic_12_Custom_Dropdown {
@@ -21,6 +24,7 @@ public class Topic_12_Custom_Dropdown {
     public void beforeClass() {
         driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+        driver.manage().window().maximize();
     }
 
         @Test
@@ -150,6 +154,29 @@ public class Topic_12_Custom_Dropdown {
                 break;
             }
         }
+    }
+    @Test
+    public void TC_05() throws InterruptedException {
+        driver.get("https://www.fahasa.com/customer/account/create");
+        driver.findElement(By.cssSelector("li.popup-login-tab-login")).click();
+        Thread.sleep(2000);
+        //Verify Login button is disable
+        graphql.Assert.assertFalse(driver.findElement(By.cssSelector("button.fhs-btn-login")).isEnabled());
+        //Verify Login button has grey background
+        String colorLoginbutton = driver.findElement(By.cssSelector("button.fhs-btn-login")).getCssValue("background-color");
+        Assert.assertEquals(colorLoginbutton, "rgba(0, 0, 0, 0)");
+        Assert.assertEquals(Color.fromString(colorLoginbutton).asHex().toUpperCase(), "#000000");
+        Thread.sleep(2000);
+
+        //Verify Login button is enable
+        driver.findElement(By.cssSelector("input#login_username")).sendKeys("0987204868");
+        driver.findElement(By.cssSelector("input#login_password")).sendKeys("12345678");
+        Thread.sleep(2000);
+        Assert.assertTrue(driver.findElement(By.cssSelector("button.fhs-btn-login")).isEnabled());
+        //Verify Login button has red background
+//            org.testng.Assert.assertEquals(colorLoginbutton,"rgb(201, 33, 39)");
+        Thread.sleep(3000);
+        Assert.assertEquals(Color.fromString(colorLoginbutton).asHex().toUpperCase(), "#C92127");
     }
 
 

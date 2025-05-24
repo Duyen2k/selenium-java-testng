@@ -4,6 +4,7 @@ public class Topic_02_Primitive_Reference {
 
     public Topic_02_Primitive_Reference(int x) {
         x = x;
+
     }
 
     public Topic_02_Primitive_Reference() {
