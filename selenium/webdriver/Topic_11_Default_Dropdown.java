@@ -33,27 +33,27 @@ public class Topic_11_Default_Dropdown {
         @Test
         public void TC_01_() throws InterruptedException {
             driver.get("https://www.rode.com/wheretobuy");
+            //Kiểm tra có được chọn nhiều hay ko
             select= new Select(driver.findElement(By.cssSelector("select#country")));
             Assert.assertFalse(select.isMultiple());
 
             select.selectByVisibleText("Vietnam");
             Thread.sleep(4000);
-
+            //Verify text đã chọn
             Assert.assertEquals(select.getFirstSelectedOption().getText(),"Vietnam");
 
+            //Nhập text để tìm kiếm
             driver.findElement(By.cssSelector("input#map_search_query")).sendKeys("Ho Chi Minh");
             driver.findElement(By.xpath("//button[text()='Search']")).click();
             Thread.sleep(4000);
 
+            //In ra list data trong droplist
             List< WebElement> DealerBranches= driver.findElements(By.cssSelector("div.dealer_branch h4"));
             Assert.assertEquals(DealerBranches.size(),16);
             //Vòng lặp for-each
             for(WebElement dealerName: DealerBranches){
                 System.out.println(dealerName.getText());
             }
-
-
-
         }
 
         @Test
