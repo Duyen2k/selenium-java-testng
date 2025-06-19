@@ -74,23 +74,12 @@ public class Topic_19_Shadow_DOM {
             WebElement thirdShadowhost=firstShadowroot.findElement(By.cssSelector("main>book-explore"));
             SearchContext thirdShadowroot=thirdShadowhost.getShadowRoot();
 
-            //Lấy ra name thằng đầu tien
+            //Lấy ra title 20 thằng
             List <WebElement> forthShadowhostElements= thirdShadowroot.findElements(By.cssSelector("ul>li>book-item"));
             for (WebElement element: forthShadowhostElements){
                 SearchContext shadowRoot=element.getShadowRoot();
                 System.out.println(shadowRoot.findElement(By.cssSelector("div.title-container>h2")).getText());
             }
-
-
-            //Lấy ra name 20 cuốn sách
-
-
-
-
-
-
-            //Lấy ra shadow host
-
         }
     @AfterClass
         public void afterClass(){

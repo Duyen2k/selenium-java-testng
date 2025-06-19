@@ -34,11 +34,15 @@ public class Topic_11_Default_Dropdown {
         public void TC_01_() throws InterruptedException {
             driver.get("https://www.rode.com/wheretobuy");
             select= new Select(driver.findElement(By.cssSelector("select#country")));
+
+            //Kiểm tra có được chọn nhiều hay không
             Assert.assertFalse(select.isMultiple());
 
+            //Chọn mô thằng bất kỳ
             select.selectByVisibleText("Vietnam");
             Thread.sleep(4000);
 
+            //Kiểm tra thằng đã chon
             Assert.assertEquals(select.getFirstSelectedOption().getText(),"Vietnam");
 
             driver.findElement(By.cssSelector("input#map_search_query")).sendKeys("Ho Chi Minh");
@@ -52,6 +56,11 @@ public class Topic_11_Default_Dropdown {
                 System.out.println(dealerName.getText());
             }
 
+        //Một số hàm thường dùng:
+        //selectByVisibleText
+        //getFirstSelectedOption().getText()
+        //getOptions().size()
+        //isMultiple()
 
 
         }
