@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Web UI Automation Testing" >
+
+    <suite-files>
+        <suite-file path="RunOnWebPlatform.xml"></suite-file>
+        <suite-file path="RunOnMobilePlatform.xml"></suite-file>
+    </suite-files>
+
+</suite>
+
+<!--Nếu set thread-count=2 mà có 3 test suite, thì nó chạy 2 test suits trước, cái còn lại thì 1 trong 2 cái test suite trước xong thì nó sẽ kích hoạt-->

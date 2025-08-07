@@ -48,7 +48,7 @@ public class Topic_15_Custom_Checkbox_Radio {
 
             //Case 4: Dùng 1 element để vừa click và vừa verify
             By RegistedRadio=By.cssSelector("input#id_new_user");
-            //Js này ko chính tgoong nên chỉ dùng khi Selenium ko hỗ trợ(hạn chế sử dụng vì and user ko sdung)
+            //Js này ko chính thống nên chỉ dùng khi Selenium ko hỗ trợ(hạn chế sử dụng vì and user ko sdung)
             ((JavascriptExecutor)driver).executeScript("arguments[0].click();",driver.findElement(RegistedRadio));
             Assert.assertTrue(driver.findElement(RegistedRadio).isSelected());
 

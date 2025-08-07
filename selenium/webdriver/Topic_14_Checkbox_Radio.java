@@ -138,6 +138,17 @@ public class Topic_14_Checkbox_Radio {
     }
 
 
+    @Test
+    public void TC_00_nhap() throws InterruptedException {
+        driver.get("https://demos.telerik.com/kendo-ui/checkbox/index");
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",driver.findElement(By.cssSelector("div.demo-section")));
+        By checkbox=By.xpath("//label[text()='Dual-zone air conditioning ']/preceding-sibling::span/input");
+        Thread.sleep(4000);
+        if(!checkbox.findElement(driver).isSelected()){
+            driver.findElement(checkbox).click();
+        }
+    }
+
     @AfterClass
     public void afterClass() {
 //            driver.quit();

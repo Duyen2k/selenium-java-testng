@@ -68,6 +68,7 @@ public class Topic_17_InterActions_P2 {
             //Khai báo phím Control
             Keys key= Keys.CONTROL;
 
+            //Nhấn phím Ctrl
             action.keyDown(key).perform();
             //Chọn số 1,3,6,11
             action.click(numberlist.get(0))
@@ -76,7 +77,7 @@ public class Topic_17_InterActions_P2 {
                     .click(numberlist.get(5))
                     .click(numberlist.get(10))
                     .perform();
-
+            //Nhả phím Control
             action.keyUp(key).perform();
 
             List <WebElement> selectedNumber=driver.findElements(By.cssSelector("li.ui-selected"));

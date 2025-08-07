@@ -1,0 +1,40 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Next_Home" verbose="1">
+<!--    Thằng group này chỉ chạy khi kết hợp với các cách dưới và chạy thằng include platformMobile-đã được define trong TC-->
+    <test name="Run By Group">
+        <groups>
+            <run>
+                <include name="platformMobile"></include>
+            </run>
+        </groups>
+    </test>
+<!--Cách 1-->
+<!--    <test name="Run On CHROME">-->
+<!--        <packages>-->
+<!--            <package name="basic.Topic_01_Annotation"/>-->
+<!--            <package name="basic.Topic_02_Assert"/>-->
+<!--        </packages>-->
+<!--    </test>-->
+<!--Cách 2(dạng Random case mong muốn)-->
+    <test name="Run On CHROME">
+        <classes>
+            <class name="platformMobile.Moble_01_User"></class>
+            <class name="platformMobile.Moble_02_Payment"></class>
+        </classes>
+    </test>
+
+
+<!--    <test name="Run On FireFox">-->
+<!--        <classes>-->
+<!--            <class name="platformMobile.Moble_01_User">-->
+<!--                <methods>-->
+<!--                    <include name="User_01_"/>-->
+<!--                    <include name="User_02_"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+
+<!--        </classes>-->
+<!--    </test>-->
+</suite>
+

@@ -38,7 +38,7 @@ public class Topic_11_Default_Dropdown {
             //Kiểm tra có được chọn nhiều hay không
             Assert.assertFalse(select.isMultiple());
 
-            //Chọn mô thằng bất kỳ
+            //Chọn một thằng bất kỳ
             select.selectByVisibleText("Vietnam");
             Thread.sleep(4000);
 

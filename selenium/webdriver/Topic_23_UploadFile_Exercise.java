@@ -1,5 +1,6 @@
 package webdriver;
 
+import com.beust.ah.A;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -53,8 +54,18 @@ public class Topic_23_UploadFile_Exercise {
         }
 
         @Test
-        public void TC_02_() {
-            driver.get("https://www.facebook.com/");
+        public void TC_02_LimewireUpload() {
+            driver.get("https://limewire.com/");
+            By AddFile_BTN=By.xpath("//input[contains(@id,'file')]");
+
+            //Upload file
+            driver.findElement(AddFile_BTN).sendKeys(LemonPath);
+            driver.findElement(AddFile_BTN).sendKeys(PeonyPath);
+
+            //Verify text
+            Assert.assertTrue(driver.findElement(By.xpath("//div[contains(@class,'items-center')]/h3[text()='"+LemonName+"']")).isDisplayed());
+            Assert.assertTrue(driver.findElement(By.xpath("//div[contains(@class,'items-center')]/h3[text()='"+PeonyName+"']")).isDisplayed());
+
         }
     @AfterClass
         public void afterClass(){

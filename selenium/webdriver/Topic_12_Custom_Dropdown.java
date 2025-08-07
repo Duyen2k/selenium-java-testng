@@ -23,7 +23,7 @@ public class Topic_12_Custom_Dropdown {
     @BeforeClass
     public void beforeClass() {
         driver = new FirefoxDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));  //Chờ cho việc tìm kiếm Element
         driver.manage().window().maximize();
     }
 

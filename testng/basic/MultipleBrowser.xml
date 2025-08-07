@@ -1,0 +1,32 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Web UI Automation Testing" verbose="1" parallel="tests" thread-count="3">
+<!--    test nghĩa là các lớp test suite chạy cùng lúc/thread-count: là số thằng chạy cùng lúc-->
+<!--    <parameter name="environmentName" value="production"></parameter>-->
+<!--    <parameter name="platformName" value="Mac"></parameter>-->
+<!--    <test name="Run on FIREFOX">-->
+<!--    <parameter name="browser" value="Firefox"></parameter>-->
+<!--        <classes>-->
+<!--            <class name="basic.Topic_12_InvocationCount"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
+
+<!--    <test name="Run on CHROME">-->
+<!--        <packages>-->
+<!--            <package name="basic"></package>-->
+<!--        </packages>-->
+<!--    </test>-->
+<!--     //Nếu chạy preserve-order=true/false thì xóa cái parallel và thread-count đo/false thì theo đúng thứ tự-->
+    <test name="Run on EDGE" preserve-order="false">
+        <parameter name="browser" value="Edge"></parameter>
+        <classes>
+            <class name="basic.Topic_02_Assert"/>
+            <class name="basic.Topic_01_Annotation"/>
+            <class name="basic.Topic_07_Description"/>
+            <class name="basic.Topic_05_Priority"/>
+            <class name="basic.Topic_06_Skip"/>
+        </classes>
+    </test>
+</suite>
+
+<!--Nếu set thread-count=2 mà có 3 test suite, thì nó chạy 2 test suits trước, cái còn lại thì 1 trong 2 cái test suite trước xong thì nó sẽ kích hoạt-->

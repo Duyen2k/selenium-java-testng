@@ -42,6 +42,15 @@ public class Topic_13_Button {
             //Verify Login button has red background
             org.testng.Assert.assertEquals(driver.findElement(By.cssSelector("button.fhs-btn-login")).getCssValue("background-color"),"rgb(201, 33, 39)");
             org.testng.Assert.assertEquals(Color.fromString(driver.findElement(By.cssSelector("button.fhs-btn-login")).getCssValue("background-color")).asHex().toUpperCase(),"#C92127");
+
+            //Tuyệt đối ko phân biệt hoa thường
+            //text.equalsIgnoreCase()
+
+            //Tương đối:
+            //text.contains()
+            //text.startsWith()
+
+            //Độ dài text: text.length()
         }
 
     @AfterClass
