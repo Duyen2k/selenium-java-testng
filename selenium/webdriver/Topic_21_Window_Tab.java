@@ -1,8 +1,6 @@
 package webdriver;
 
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -211,6 +209,8 @@ private void switchToWindowByTitle(String expectedTitle) {
         Set<String> allWindows = driver.getWindowHandles();
         for (String loginwindow : allWindows) {
             //Switch vào từng window để lấy title page
+            //Ở bài này, do witch vào để kiểm tra title, nên window thứ 2 nó bị close(khi move sang window1), do vậy:
+            //nó ko tìm thấy window2(bị close rùi)=> bài này chỉ nên dùng windowID
             driver.switchTo().window(loginwindow);
             Thread.sleep(2000);
             //Lấy ra title của page đang active
@@ -240,6 +240,33 @@ private void switchToWindowByTitle(String expectedTitle) {
         Thread.sleep(2000);
         //Check errAuthenText is displayed
         Assert.assertTrue(driver.findElement(By.xpath("//p[text()='Authentication was not successful.  Please try again.']")).isDisplayed());
+    }
+
+    @Test
+    public void TC_windowTab_selenium_4x(){
+        driver.get("https://admin-demo.nopcommerce.com/login?ReturnUrl=%2Fadmin%2F");
+        //Qua trang Admin-> quay về trang window của user
+        //Tự switch qua ko cần sử dung windowID nữa, có thể test song song
+        driver.switchTo().newWindow(WindowType.TAB).get("https://www.nopcommerce.com/en/demo");
+    }
+
+    @Test
+    public void TC_study_01(){
+        driver.get("https://automationfc.github.io/basic-form/index.html");
+        //Lấy ra ID của curent Window
+        String GithubWindowID=driver.getWindowHandle();
+
+        driver.findElement(By.xpath("//a[text()='GOOGLE']")).click();
+
+        Set<String> allWindowIDs=driver.getWindowHandles();
+
+        for(String id:allWindowIDs){
+            if (!id.equals(GithubWindowID)){
+                driver.switchTo().window(id);
+            }
+        }
+       driver.findElement(By.xpath("//textarea[@title='Tìm kiếm']")).sendKeys("Việt Nam");
+        driver.findElement(By.xpath("//textarea[@title='Tìm kiếm']")).sendKeys(Keys.ENTER);
     }
     @AfterClass
         public void afterClass(){

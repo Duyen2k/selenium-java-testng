@@ -81,6 +81,17 @@ public class Topic_19_Shadow_DOM {
                 System.out.println(shadowRoot.findElement(By.cssSelector("div.title-container>h2")).getText());
             }
         }
+
+        @Test
+        public void TC_03(){
+        driver.get("https://books-pwakit.appspot.com/");
+
+        WebElement firstShadowHost = driver.findElement(By.cssSelector(""));
+        SearchContext firstShadowRoot= firstShadowHost.getShadowRoot();
+
+        firstShadowRoot.findElement(By.cssSelector("")).sendKeys("");
+        }
+
     @AfterClass
         public void afterClass(){
 //            driver.quit();

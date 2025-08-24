@@ -28,7 +28,7 @@ public class Topic_17_InterActions_P1 {
         @Test
         public void TC_01_ToolTips() {
             driver.get("https://automationfc.github.io/jquery-tooltip/");
-            //Một số haàm hay dùng cho hover
+            //Một số hàm hay dùng cho hover
             //moveToElement(): hover chuột,perform():quan trọng để chay
             //Lưu ý: chạy action ko dùng chuột hay bàn phím để ko bị move hover ra ngoài
 
