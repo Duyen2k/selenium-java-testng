@@ -29,18 +29,18 @@ public class Topic_24_Wait_Part_II_FindElement {
 
     @Test
     public void TC_01_FindElement() throws InterruptedException {
-        //**Tìm thấy 1 Element
+        //1**Tìm thấy 1 Element
         //Vào sẽ tìm thấy Element ngay chứ ko cần cờ hết Timeout của Implicit
 //        driver.findElement(By.cssSelector("input#email"));
 
-        //**Tìm thấy 0 Element
+        //2**Tìm thấy 0 Element
         //Vào sẽ ko tìm thấy Element và sẽ tìmdđi tìm lại mỗi 0.5s 1 lần cho đến khi hết timeout là 15s=30 lần
         //Đánh Fail testcase tại vị trí này và show lỗi NoSuchElementException
 
         //Trong trường hợp mà Element ko tìm thấy và vẫn đang tìm lại. Nếu Element có xuất hieenj thì nó vẫn pass
-//        driver.findElement(By.cssSelector("input#email8888"));
+        driver.findElement(By.cssSelector("input#email8888"));
 
-        //**Tìm thấy nhiều hơn 1 Element
+        //3**Tìm thấy nhiều hơn 1 Element
         //Nó sẽ luôn thao tác với thằng đầu tiên(kể ca nó bị ẩn -> sẽ bị lỗi ko thể tương tác lên Element)
         //Do vậy luôn luôn phải tìm thấy duy nhất 1 Element để tương tác
         driver.findElement(By.cssSelector("input:not([type='hidden'])")).sendKeys("TextonSearchbox");
@@ -49,25 +49,26 @@ public class Topic_24_Wait_Part_II_FindElement {
 
     @Test
     public void TC_02_FindElements(){
-        //**Tìm thấy 1 Element
+        //1**Tìm thấy 1 Element
         //Trả về 1 element + ko cần chờ hết timeout
+
 //        List<WebElement> elementList=driver.findElements(By.cssSelector("input#email"));
 //        System.out.println(elementList.size());
 
-        //**Tìm thấy 0 Element
-        //Vào sẽ ko tìm thấy Element và sẽ tìmdđi tìm lại mỗi 0.5s 1 lần cho đến khi hết timeout là 15s=30 lần
+        //2**Tìm thấy 0 Element
+        //Vào sẽ ko tìm thấy Element và sẽ tìm đi tìm lại mỗi 0.5s 1 lần cho đến khi hết timeout là 15s=30 lần
         //Ko đánh Fail testcase mà trả về list rỗng => 0 element
-//        List<WebElement> elementList= driver.findElements(By.cssSelector("input#email8888"));
-//        System.out.println(elementList.size());
-        //Ko hiển thị trong html
+        List<WebElement> elementList= driver.findElements(By.cssSelector("input#email8888"));
+        System.out.println(elementList.size());
+        //Ko hiển thị trong html=> Nếu muốn tìm element non-present thì dùng findElement số nhiều
 //        Assert.assertEquals(elementList.size(),0);
 
-        //**Tìm thấy nhiều hơn 1 Element
+        //3**Tìm thấy nhiều hơn 1 Element
         //Lấy hết Element để lưu vào List
-        List <WebElement> elementList=driver.findElements(By.cssSelector("input:not([type='hidden'])"));
+        List <WebElement> elementList2=driver.findElements(By.cssSelector("input:not([type='hidden'])"));
 
         //Thao tác lên các element trong list
-        elementList.get(1).sendKeys("Selenium");
+        elementList2.get(1).sendKeys("Selenium");
 
 
 

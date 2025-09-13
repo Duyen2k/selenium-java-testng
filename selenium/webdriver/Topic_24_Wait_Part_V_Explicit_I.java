@@ -64,6 +64,30 @@ public class Topic_24_Wait_Part_V_Explicit_I {
     //8.Text
     explicitWait.until(ExpectedConditions.textToBe(By.cssSelector(""),"Selenium"));
     Assert.assertEquals(driver.findElement(By.cssSelector("")).getText(),"");
+
+    //9.Nhiều điều kiện: And/or
+    explicitWait.until(ExpectedConditions.and(
+            ExpectedConditions.visibilityOfElementLocated(By.cssSelector("")),
+            ExpectedConditions.presenceOfElementLocated(By.cssSelector(""))
+    ));
+
+    explicitWait.until(ExpectedConditions.or(
+            ExpectedConditions.visibilityOfElementLocated(By.cssSelector("")),
+            ExpectedConditions.presenceOfElementLocated(By.cssSelector(""))
+    ));
+
+    //10.Attribute/DOM Properties/Frame
+    explicitWait.until(ExpectedConditions.attributeToBe(By.cssSelector(""),"class","email")) ;
+
+    explicitWait.until(ExpectedConditions.domPropertyToBe(driver.findElement(By.cssSelector("")),"class","email" ));
+    explicitWait.until(ExpectedConditions.domAttributeToBe(driver.findElement(By.cssSelector("")),"class","email" ));
+
+    explicitWait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.cssSelector("")));
+    explicitWait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(driver.findElement(By.cssSelector(""))));
+    explicitWait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("facebook"));
+    explicitWait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(0)); //index
+
+
     }
 
 
